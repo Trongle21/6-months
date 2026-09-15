@@ -71,7 +71,10 @@ export default function Timeline() {
   //         className="inline-flex items-center gap-2 text-pink-500 mb-4"
   //       >
   //         <Heart className="w-5 h-5 fill-current" />
-  //         <span className="text-lg font-medium" style={{ fontFamily: "var(--font-script)" }}>
+  //         <span
+  //           className="text-lg font-medium"
+  //           style={{ fontFamily: "var(--font-script)" }}
+  //         >
   //           Our Journey
   //         </span>
   //         <Heart className="w-5 h-5 fill-current" />
@@ -114,9 +117,13 @@ export default function Timeline() {
   //               </motion.div>
 
   //               {/* Content card */}
-  //               <div className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${
-  //                 isLeft ? "md:mr-auto md:text-right" : "md:ml-auto md:text-left"
-  //               }`}>
+  //               <div
+  //                 className={`ml-14 md:ml-0 md:w-[calc(50%-2rem)] ${
+  //                   isLeft
+  //                     ? "md:mr-auto md:text-right"
+  //                     : "md:ml-auto md:text-left"
+  //                 }`}
+  //               >
   //                 <div className="glass rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-shadow">
   //                   <div className="flex items-center gap-2 mb-2">
   //                     <Icon className="w-4 h-4 text-rose-400" />
