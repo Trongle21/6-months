@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rose-primary: #e11d48;
+  --color-rose-secondary: #fda4af;
+  --color-pink: #ec4899;
+  --color-pink-light: #fbcfe8;
+  --color-purple: #a855f7;
+  --color-purple-light: #e9d5ff;
+  --color-gold: #fbbf24;
+  --color-cream: #fef3c7;
+  --color-dark: #1f2937;
+  --color-dark-light: #374151;
+  
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Quicksand", system-ui, sans-serif;
+  --font-script: "Dancing Script", cursive;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    height: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f5d0fe 100%);
+    height: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+  }
+}
+
+/* Custom scrollbar - chỉ 1 scrollbar duy nhất */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #fdf2f8, #fce7f3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f472b6, #ec4899);
+  border-radius: 10px;
+  border: 2px solid #fdf2f8;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ec4899, #db2777);
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-20px) rotate(5deg); opacity: 0.8; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(1.1); }
+  20%, 40% { transform: scale(1); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes letter-open {
+  0% { transform: perspective(1000px) rotateX(-90deg); transform-origin: top; }
+  100% { transform: perspective(1000px) rotateX(0deg); transform-origin: top; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px #e11d48, 0 0 10px #e11d48, 0 0 15px #e11d48; }
+  50% { box-shadow: 0 0 10px #e11d48, 0 0 20px #e11d48, 0 0 30px #e11d48; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-heart-beat {
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+.animate-letter-open {
+  animation: letter-open 0.8s ease-out forwards;
+  transform-origin: top center;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Letter styles */
+.letter-container {
+  perspective: 1000px;
+}
+
+.letter-envelope {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.letter-envelope:hover {
+  transform: translateY(-5px);
+}
+
+.letter-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  transition: transform 0.5s ease;
+  z-index: 2;
+}
+
+.letter-flap.open {
+  transform: rotateX(180deg);
+}
+
+.letter-body {
+  background: linear-gradient(180deg, #fff 0%, #fef9c3 100%);
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 5s linear forwards;
+}
+
+/* Heart particle */
+.heart-particle {
+  position: fixed;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
