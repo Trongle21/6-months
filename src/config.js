@@ -6,7 +6,7 @@ export const ANNIVERSARY_DATE = new Date("2026-09-16T17:00:00");
 export const LOVE_START_DATE = new Date("2026-03-16");
 
 // Tên người yêu - Thay đổi tại đây
-export const PARTNER_NAME = "Người Mơ iu";
+export const PARTNER_NAME = "Mơ iu";
 
 // Tin nhắn trong thư - Tùy chỉnh theo ý bạn
 export const LETTER_CONTENT = {
